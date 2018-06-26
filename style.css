@@ -1,0 +1,141 @@
+/*
+    misc styles, nothing to do with CSS variables
+  */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+:root {
+    --radius: 0;
+    --filter: 0;
+    --baseColor: #ffc600;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+img {
+    margin-top: 70px;
+    border-radius: var(--radius);
+    background: var(--baseColor);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+.blurFilter{
+    -webkit-filter: blur(var(--filter));
+    filter: blur(var(--filter));
+}
+.brightnessFilter{
+    -webkit-filter: brightness(var(--filter));
+    filter: brightness(var(--filter));
+}
+.contrastFilter{
+    -webkit-filter: contrast(var(--filter));
+    filter: contrast(var(--filter));
+}
+.grayscaleFilter{
+    -webkit-filter: grayscale(var(--filter));
+    filter: grayscale(var(--filter));
+}
+.invertFilter{
+    -webkit-filter: invert(var(--filter));
+    filter: invert(var(--filter));
+}
+.sepiaFilter{
+    -webkit-filter: sepia(var(--filter));
+    filter: sepia(var(--filter));
+}
+.saturateFilter{
+    -webkit-filter: saturate(var(--filter));
+    filter: saturate(var(--filter));
+}
+.opacityFilter{
+    -webkit-filter: opacity(var(--filter));
+    filter: opacity(var(--filter));
+}
+
+body {
+    text-align: center;
+    background: #603813;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-gradient(linear, left top, right top, from(#b29f94), to(#603813));
+    background: linear-gradient(to right, #b29f94, #603813); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.controls {
+    margin:25px 0;
+}
+
+input[type='range'] {
+    width: 100px;
+}
+input[type='range']:disabled{
+    background:red;
+}
+input[type='range']:enabled{
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.effects {
+    font-size: 20px;
+    width:60%;
+    margin:0 auto;
+    margin-bottom:50px;
+}
+
+
+.imageWrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--baseColor);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.hl {
+    color: var(--baseColor);
+}
+
+.colorGen {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}

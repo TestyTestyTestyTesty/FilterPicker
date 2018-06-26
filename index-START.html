@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scoped CSS Variables and JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Filters with <span class='hl'>JS</span></h1>
+    <div class="controls">
+        <form>
+            <fieldset class="effects">
+                <legend>Choose effect</legend>
+                <!--dodac zmiane efektow wraz z opcja ustawienia nasycenia-->
+                <input type="radio" name="effect" id="brightness" data-sizing="%">
+                <label for="brightness">brightness</label>
+                <input type="radio" name="effect" id="contrast" data-sizing="%">
+                <label for="contrast">contrast</label>
+                <input type="radio" name="effect" id="grayscale" data-sizing="%">
+                <label for="grayscale">grayscale</label>
+                <input type="radio" name="effect" id="invert" data-sizing="deg">
+                <label for="heurotate">invert</label>
+                <input type="radio" name="effect" id="sepia" data-sizing="%">
+                <label for="sepia">sepia</label>
+                <input type="radio" name="effect" id="saturate" data-sizing="%">
+                <label for="saturate">saturate</label>
+                <input type="radio" name="effect" id="opacity" data-sizing="%">
+                <label for="opacity">opacity</label>
+                <input type="radio" name="effect" id="blur" data-sizing="px">
+                <label for="blur">blur</label>
+            </fieldset>
+        </form>
+        <label for="radius">Radius:</label>
+        <input id="radius" class="slider" type="range" name="radius" min="0" max="50" value="0" data-sizing="px" disabled>
+
+        <label for="filter">Filter:</label>
+        <input id="filter" class="slider" type="range" name="filter" min="0" max="100" value="0" data-sizing="%">
+
+    </div>
+    <img id='image' src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            //zmienne i stale
+
+            const inputs = document.querySelectorAll('input[type=range]');
+            const radios = document.querySelectorAll('input[type=radio]');
+            let radius = document.querySelector('#radius');
+            let filter = document.querySelector('#filter');
+            let image = document.querySelector('#image');
+            let base = document.querySelector('#base');
+            let root = document.querySelector(':root');
+
+            // funkcja updatująca
+            function update() {
+                    root.style.setProperty('--' + this.name, this.value + dataSizing);
+            }
+            function changeFilter() {
+                document.getElementById('radius').disabled = false;
+                image.className='';
+                image.classList.add(this.id + 'Filter');
+                dataSizing = this.dataset.sizing;
+            }
+
+            //podpiecie event listenerow
+            inputs.forEach(input => input.addEventListener('input', update));
+            radios.forEach(radio => radio.addEventListener('click', changeFilter));
+            // randomowe kolory
+            function setRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                root.style.setProperty('--baseColor', color);
+            }
+            setRandomColor();
+
+        });
+    </script>
+
+
+</body>
+
+</html>
