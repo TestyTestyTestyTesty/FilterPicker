@@ -21,7 +21,7 @@
                 <input type="radio" name="effect" id="grayscale" data-sizing="%">
                 <label for="grayscale">grayscale</label>
                 <input type="radio" name="effect" id="invert" data-sizing="deg">
-                <label for="heurotate">invert</label>
+                <label for="invert">invert</label>
                 <input type="radio" name="effect" id="sepia" data-sizing="%">
                 <label for="sepia">sepia</label>
                 <input type="radio" name="effect" id="saturate" data-sizing="%">
@@ -63,6 +63,7 @@
                 image.className='';
                 image.classList.add(this.id + 'Filter');
                 dataSizing = this.dataset.sizing;
+                console.log(dataSizing);
             }
 
             //podpiecie event listenerow
