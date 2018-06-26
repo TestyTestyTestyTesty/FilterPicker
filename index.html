@@ -36,7 +36,7 @@
         <input id="radius" class="slider" type="range" name="radius" min="0" max="50" value="0" data-sizing="px" disabled>
 
         <label for="filter">Filter:</label>
-        <input id="filter" class="slider" type="range" name="filter" min="0" max="100" value="0" data-sizing="%">
+        <input id="filter" class="slider" type="range" name="filter" min="0" max="100" value="0" data-sizing="%" disabled>
 
     </div>
     <img id='image' src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
@@ -57,7 +57,9 @@
                     root.style.setProperty('--' + this.name, this.value + dataSizing);
             }
             function changeFilter() {
-                document.getElementById('radius').disabled = false;
+                inputs.forEach(function(e){
+                    e.disabled=false;
+                });
                 image.className='';
                 image.classList.add(this.id + 'Filter');
                 dataSizing = this.dataset.sizing;
