@@ -69,11 +69,16 @@
                 image.classList.add(this.id + 'Filter');
                 dataSizing = this.dataset.sizing;
             }
-
+            function ifDisabled(){
+                if (this.disabled=true) {
+                    alert('Firstly choose filter');
+                } return;
+            }
             //podpiecie event listenerow
             radius.addEventListener('input',updateRadius);
             filter.addEventListener('input',updateFilter);
             radios.forEach(radio => radio.addEventListener('click', changeFilter));
+            inputs.forEach(input => input.addEventListener('keydown', ifDisabled));
             // randomowe kolory
             function setRandomColor() {
                 var letters = '0123456789ABCDEF';
