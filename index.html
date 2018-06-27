@@ -20,7 +20,7 @@
                 <label for="contrast">contrast</label>
                 <input type="radio" name="effect" id="grayscale" data-sizing="%">
                 <label for="grayscale">grayscale</label>
-                <input type="radio" name="effect" id="invert" data-sizing="deg">
+                <input type="radio" name="effect" id="invert" data-sizing="%">
                 <label for="invert">invert</label>
                 <input type="radio" name="effect" id="sepia" data-sizing="%">
                 <label for="sepia">sepia</label>
@@ -53,8 +53,13 @@
             let root = document.querySelector(':root');
 
             // funkcja updatująca
-            function update() {
+            function updateRadius() {
+                    root.style.setProperty('--' + this.name, this.value + '%');
+            }
+            function updateFilter() {
                     root.style.setProperty('--' + this.name, this.value + dataSizing);
+                    console.log('--' + this.name, this.value + dataSizing);
+
             }
             function changeFilter() {
                 inputs.forEach(function(el){
@@ -63,11 +68,11 @@
                 image.className='';
                 image.classList.add(this.id + 'Filter');
                 dataSizing = this.dataset.sizing;
-                console.log(dataSizing);
             }
 
             //podpiecie event listenerow
-            inputs.forEach(input => input.addEventListener('input', update));
+            radius.addEventListener('input',updateRadius);
+            filter.addEventListener('input',updateFilter);
             radios.forEach(radio => radio.addEventListener('click', changeFilter));
             // randomowe kolory
             function setRandomColor() {
