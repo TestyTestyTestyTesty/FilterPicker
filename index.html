@@ -78,7 +78,7 @@
             radius.addEventListener('input',updateRadius);
             filter.addEventListener('input',updateFilter);
             radios.forEach(radio => radio.addEventListener('click', changeFilter));
-            inputs.forEach(input => input.addEventListener('keydown', ifDisabled));
+            inputs.forEach(input => input.addEventListener('click', ifDisabled));
             // randomowe kolory
             function setRandomColor() {
                 var letters = '0123456789ABCDEF';
