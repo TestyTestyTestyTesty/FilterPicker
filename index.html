@@ -77,8 +77,8 @@
             //podpiecie event listenerow
             radius.addEventListener('input',updateRadius);
             filter.addEventListener('input',updateFilter);
-            radios.forEach(radio => radio.addEventListener('click', changeFilter));
             inputs.forEach(input => input.addEventListener('click', ifDisabled));
+            radios.forEach(radio => radio.addEventListener('click', changeFilter));
             // randomowe kolory
             function setRandomColor() {
                 var letters = '0123456789ABCDEF';
